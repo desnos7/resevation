@@ -17,10 +17,11 @@ function App() {
         <Routes>
        
           <Route path={"/acceuil"} element={<Acceuil/>} />
-          <Route path={"/about"} element={<About/>} />
-          <Route path={"/contact"} element={<p>salut</p>} />
           <Route path={"/reservation"} element={<Reservation />} />
           <Route path={"/vehicule"} element={<Vehicule />} />
+          <Route path={"/connexion"} element={<Connexion />} />
+          <Route path={"/Inscription"} element={<Inscription />} />
+
         </Routes>
       </BrowserRouter>
     </>
