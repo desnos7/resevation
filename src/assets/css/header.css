@@ -43,11 +43,11 @@ header{
 }
 .navbar .navlinks ul {
     display: flex;
-    margin-top: 30px;
+    margin-top: 10px;
 
 }
 .navbar .navlinks ul li{
-    margin: 0 60px;
+    margin: 0 20px;
     
 }
 .navbar .navlinks ul li.active a{

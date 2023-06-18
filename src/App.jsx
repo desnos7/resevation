@@ -1,27 +1,24 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import About from "./pages/about.jsx";
-import Contact from "./pages/contact.jsx";
-import Reservation from "./pages/reservation.jsx";
-import Acceuil from "./pages/acceuil.jsx";
-import Vehicule from "./pages/vehicules.jsx";
+import Acceuil from "../src/pages/acceuil.jsx";
+import Connexion from "../src/pages/connexion.jsx";
+import Inscription from "../src/pages/inscription.jsx";
 
 
-import "./App.css";
 
 function App() {
   return (
     <>
+   
       <BrowserRouter>
 
         <Routes>
        
-          <Route path={"/acceuil"} element={<Acceuil/>} />
-          <Route path={"/reservation"} element={<Reservation />} />
-          <Route path={"/vehicule"} element={<Vehicule />} />
-          <Route path={"/connexion"} element={<Connexion />} />
-          <Route path={"/Inscription"} element={<Inscription />} />
+          <Route path={"/"} element={<Acceuil/>} />
+         <Route path={"/connexion"} element={<Connexion/>}/>
+         <Route path={"/inscription"} element={<Inscription/>}/>
 
+         
         </Routes>
       </BrowserRouter>
     </>

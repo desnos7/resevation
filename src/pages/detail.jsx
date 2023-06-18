@@ -1,7 +1,7 @@
 function detail(){
   return (
 
-     <div></div>
+     <div>sajknkl</div>
 
 
   )
