@@ -5,10 +5,10 @@ function footer() {
    <div> 
        
        <div className="footer">
-	<div class="container">		
-		<div class="row text-center">						
-			<div class="col-lg-12 col-sm-12 col-xs-12">
-				<div class="footer_menu">
+	<div className="container">		
+		<div className="row text-center">						
+			<div className="col-lg-12 col-sm-12 col-xs-12">
+				<div className="footer_menu">
 					<ul>
 						<li><a href="#">Home</a></li>
 						<li><a href="#">About</a></li>
@@ -20,12 +20,12 @@ function footer() {
 				<div className="footer_copyright">
 					<p>© 2021 Sai. All Rights Reserved.</p>
 				</div>	
-				<div class="footer_profile">
+				<div className="footer_profile">
 					<ul>
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-						<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="#"><i className="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i className="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i className="fa fa-instagram"></i></a></li>
+						<li><a href="#"><i className="fa fa-pinterest"></i></a></li>
 					</ul>
 				</div>						
 			</div>						

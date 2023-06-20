@@ -12,7 +12,7 @@ function header() {
         <img src={logo} alt="" className="logo"/>
        <div className="navlinks">
            <ul>
-               <li class=""><a href="/">ACCEUIL</a></li>
+               <li className=""><a href="/">ACCEUIL</a></li>
                <li><Link to="/" >PROFILE</Link> </li>
                <li><Link to="/vehicules">VEHICULES</Link> </li> 
                <li><Link to="/connexion" >CONNEXION</Link> </li>
