@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ComVehicules from "../components/comVehicules";
+import Loader from "../components/loader"
 
 import "../assets/css/vehicule.css";
 
@@ -30,7 +31,7 @@ function Vehicule() {
   return (
     <div>
       {loading ? (
-        <p>loader ...</p>
+        <Loader/>
       ) : error ? (
         <p>Error</p>
       ) : (
