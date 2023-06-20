@@ -16,7 +16,7 @@ useEffect(()=>{
     <>
       <Header />
       
-        <div class="img1">
+        <div className="img1">
           <img src={voiture} alt="" />
           <p>Cher client nous vous accompagnons avec précision ...</p>
         </div>

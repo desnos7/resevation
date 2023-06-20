@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Les voitures berlines",
+    "imageurls": [
+      "https://livedemo00.template-help.com/wt_51380/images/slide-01.jpg",
+      "https://livedemo00.template-help.com/wt_51380/images/slide-01.jpg",
+      "https://livedemo00.template-help.com/wt_51380/images/slide-01.jpg"
+    ],
+    "prixjournee": 25000,
+    "type": "Luxe",
+    "phonenumber": 1245678956,
+    " reservationencours": [],
+    "description": "Au départ tricorps, elle a évolué en bicorps avec hayon dans les années 60, puis en monocorps 20 ans plus tard. Typiquement dotée de 4 fenêtres latérales et d'autant de portes, elle emporte de 4 à 6 personnes sur 2 rangées de sièges."
+  },
+  {
+    "name": "Les voitures berlines",
+    "imageurls": [
+      "https://livedemo00.template-help.com/wt_51380/images/product-01-270x175.jpg",
+      "https://livedemo00.template-help.com/wt_51380/images/product-01-270x175.jpg",
+      "https://livedemo00.template-help.com/wt_51380/images/product-01-270x175.jpg"
+    ],
+    "prixjournee": 25000,
+    "type": "Luxe",
+    "phonenumber": 1245678956,
+    " reservationencours": [],
+    "description": "Au départ tricorps, elle a évolué en bicorps avec hayon dans les années 60, puis en monocorps 20 ans plus tard. Typiquement dotée de 4 fenêtres latérales et d'autant de portes, elle emporte de 4 à 6 personnes sur 2 rangées de sièges."
+  },
+  {
+    "name": "Les voitures berlines",
+    "imageurls": [
+      "https://livedemo00.template-help.com/wt_51380/images/product-06-270x175.jpg",
+      "https://livedemo00.template-help.com/wt_51380/images/product-06-270x175.jpg",
+      "https://livedemo00.template-help.com/wt_51380/images/product-06-270x175.jpg"
+    ],
+    "prixjournee": 25000,
+    "type": "Luxe",
+    "phonenumber": 1245678956,
+    " reservationencours": [],
+    "description": "Au départ tricorps, elle a évolué en bicorps avec hayon dans les années 60, puis en monocorps 20 ans plus tard. Typiquement dotée de 4 fenêtres latérales et d'autant de portes, elle emporte de 4 à 6 personnes sur 2 rangées de sièges."
+  }
+]

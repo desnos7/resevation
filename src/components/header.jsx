@@ -14,7 +14,6 @@ function header() {
            <ul>
                <li class=""><a href="/">ACCEUIL</a></li>
                <li><Link to="/" >PROFILE</Link> </li>
-
                <li><Link to="/vehicules">VEHICULES</Link> </li> 
                <li><Link to="/connexion" >CONNEXION</Link> </li>
                <li><Link to="/inscription" >INSCRIPTION</Link> </li>            
