@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useParams} from "react-router-dom";
+import axios from "axios";
 
 import "../assets/css/reservation.css";
 
 function reservation() {
-  const { id } = useParams();
-  const [vehicules, setVehicules] = useState([]);
+  const { id,dateDebut,dateFin } = useParams();
+  const [vehicules, setVehicules] = useState("");
   const [loading, setLoading] = useState();
 
      useEffect(() => {
-
+      fetchData()
      }, []);
 
      async function fetchData() {
       try {
         setLoading(true);
         const response = await axios.post(
-          "http://localhost:4000/rooms/getvehicule"
+          `http://localhost:4000/rooms/detail/${id}/`
         );
         const data = response.data;
         setVehicules(data);
@@ -25,9 +26,6 @@ function reservation() {
         console.log(error);
       } 
     }
-
-
-
 
         return (
     <>
@@ -43,9 +41,11 @@ function reservation() {
             </div>
             <div className="col-sm-7">
               <div className="card-block ">
-                <h4 className="card-title">{id}</h4>
-                <p>Copy paste the HTML and CSS.</p>
-                <p>Change around the content for awsomenes</p>
+                <h4 className="card-title"> {vehicules.name}</h4>
+                <p></p>
+                <p> nom de lutilisateur: </p>
+                <p>dateDebut:{dateDebut}</p>
+                <p>dateFin:{dateFin}</p>
                 <br />
                 <a href="#" className="btn btn-primary btn-sm float-right">
                   Read More

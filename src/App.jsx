@@ -15,7 +15,7 @@ function App() {
           <Route path={"/connexion"} element={<Connexion />} />
           <Route path={"/inscription"} element={<Inscription />} />
           <Route path={"/vehicules"} element={<Vehicules />} />
-          <Route path={"/reservation/:id"} element={<Reservation />} />
+          <Route path={"/reservation/:id/:dateDebut/:dateFin"} element={<Reservation />} />
         </Routes>
       </BrowserRouter>
     </>
