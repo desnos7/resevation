@@ -5,6 +5,9 @@ import Connexion from "../src/pages/connexion.jsx";
 import Inscription from "../src/pages/inscription.jsx";
 import Vehicules from "../src/pages/vehicules.jsx";
 import Reservation from "../src/pages/reservation.jsx"
+import ProfileAdmin from "../src/pages/profileAdmin.jsx";
+import ProfileUser from "../src/pages/profileUser.jsx";
+
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
           <Route path={"/inscription"} element={<Inscription />} />
           <Route path={"/vehicules"} element={<Vehicules />} />
           <Route path={"/reservation/:id/:dateDebut/:dateFin"} element={<Reservation />} />
+          <Route path={"/admin"}  element={<ProfileAdmin/>} />
+          <Route path={"/profile"}  element={<ProfileUser/>} />
+
         </Routes>
       </BrowserRouter>
     </>
