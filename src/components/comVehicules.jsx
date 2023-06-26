@@ -29,7 +29,7 @@ function comVehicules({ voiture,dateDebut,dateFin}) {
             <a href="#" className="btn btn-primary btn-sm float-right  p-4 ">
             VOIR PLUS
             </a>
-            <Link to={`/reservation/${voiture._id}/${dateDebut}/${dateFin}`} className="btn btn-primary btn-sm float-right p-4">
+            <Link to={`/vehicules/detail/${voiture._id}/${dateDebut}/${dateFin}`} className="btn btn-primary btn-sm float-right p-4">
               RESERVEZ
             </Link>
           </div>

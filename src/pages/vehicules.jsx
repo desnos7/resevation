@@ -9,12 +9,16 @@ import Moment from "moment";
 import "../assets/css/vehicule.css";
 
 function Vehicule() {
+  
   const [vehicules, setVehicules] = useState([]);
   const [loading, setLoading] = useState();
   const [error, setError] = useState(null);
 
   const [dateDebut, setDateDebut] = useState("");
   const [dateFin, setDateFin] = useState("");
+
+  const [JourTotal,setJourTotlal]=useState(0)
+
 
   useEffect(() => {
     fetchData();
@@ -24,7 +28,7 @@ function Vehicule() {
     try {
       setLoading(true);
       const response = await axios.get(
-        "http://localhost:4000/rooms/getvehicule"
+        "http://localhost:4000/vehicules/getvehicule"
       );
       const data = response.data;
       setVehicules(data);
@@ -34,10 +38,9 @@ function Vehicule() {
     }
   }
   function valeurDate(valeur) {
-    setDateDebut(valeur[0].format("DD-MM-YYYY"));
-    setDateFin(valeur[1].format("DD-MM-YYYY"));
+    setDateDebut(valeur[0].format("MM-DD-YYYY"));
+    setDateFin(valeur[1].format("MM-DD-YYYY"));
   }
-
 
   return (
     <div>
@@ -47,11 +50,21 @@ function Vehicule() {
         <p>Error</p>
       ) : (
         <div>
-          <div>
-            <RangePicker format="DD-MM-YYYY"  onChange={valeurDate} />
+          <div className="mr-5 bg-light shadow p-3 container  bg-white rounded mt-5 ">
+            <RangePicker
+              className="p-3 "
+              format="MM-DD-YYYY"
+              onChange={valeurDate}
+            />
           </div>
           {vehicules.map((voiture) => {
-            return <ComVehicules voiture={voiture}  dateDebut={dateDebut} dateFin={dateFin}/>;
+            return (
+              <ComVehicules
+                voiture={voiture}
+                dateDebut={dateDebut}
+                dateFin={dateFin}
+              />
+            );
           })}
         </div>
       )}

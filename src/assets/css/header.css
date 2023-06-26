@@ -6,6 +6,9 @@
     text-decoration: none;
     list-style: none;
 }
+a{
+    text-decoration: none;
+  }
 body{
     font-family: 'Montserrat Alternates', sans-serif;
 }

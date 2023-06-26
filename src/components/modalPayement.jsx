@@ -12,7 +12,7 @@ function Modale() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Reservez
       </Button>
 
       <Modal show={show} onHide={handleClose}>

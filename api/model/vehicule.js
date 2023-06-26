@@ -14,21 +14,21 @@ const vehicule = new Schema(
     },
     image: {
       type: String,
-      require: true,
+      required: true,
     },
-    eype: {
+    type: {
       type: String,
-      require: true,
+      required: true,
     },
     prixjournee: {
       type: Number,
-      require: true,
+      required: true,
     },
     imageurls: [],
     reservationencours: [],
     description: {
       type: String,
-      require: true,
+      required: true,
     },
   },
   { timestamps: true }

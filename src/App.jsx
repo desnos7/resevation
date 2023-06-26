@@ -18,7 +18,7 @@ function App() {
           <Route path={"/connexion"} element={<Connexion />} />
           <Route path={"/inscription"} element={<Inscription />} />
           <Route path={"/vehicules"} element={<Vehicules />} />
-          <Route path={"/reservation/:id/:dateDebut/:dateFin"} element={<Reservation />} />
+          <Route path={"/vehicules/detail/:id/:dateDebut/:dateFin"} element={<Reservation />} />
           <Route path={"/admin"}  element={<ProfileAdmin/>} />
           <Route path={"/profile"}  element={<ProfileUser/>} />
 
