@@ -30,6 +30,7 @@ const vehicule = new Schema(
       type: String,
       required: true,
     },
+    paidTransaction: { type: mongoose.Schema.Types.ObjectId, ref: 'Transaction' }
   },
   { timestamps: true }
 );

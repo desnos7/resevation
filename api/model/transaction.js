@@ -10,5 +10,5 @@ const transaction = new Schema({
   })
 
 
-  const transactionSchema=mongoose.model("reservez",transaction )
-  module.exports=transactionSchema;
+  const transactione=mongoose.model("reservez",transaction )
+ export default transactione;
