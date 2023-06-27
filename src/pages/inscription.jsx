@@ -1,20 +1,92 @@
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/inscription.css";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 function inscription() {
+  const navigate = useNavigate();
+  const [inputValue, setInputValue] = useState({
+    motDePasse: "",
+    firstname: "",
+    addressEmail: "",
+    phonenumber: "",
+  });
+  const { addressEmail, firstname, phonenumber, motDePasse } = inputValue;
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    console.log(e.target.value);
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+  };
+
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "bottom-right",
+    });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:4000/post/inscription",
+        {
+          ...inputValue,
+        },
+        { withCredentials: true }
+      ); 
+      const { success, message } = data;
+      if (success) {
+        handleSuccess(message);
+        setTimeout(() => {
+          navigate("/connexion");
+        }, 1000);
+      } else {
+        handleError(message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setInputValue({
+      ...inputValue,
+      motDePasse: "",
+      firstname: "",
+      addressEmail: "",
+      phonenumber: "",
+    });
+  };
+
   return (
     <>
-      <form className="form_main" action="/post/inscription" method="POST">
+      <form className="form_main" onSubmit={handleSubmit}>
         <p className="heading">INSCRIPTION</p>
         <p className="form-title">Inscrivez-vous</p>
         <div className="inputContainer">
-          <input type="text" placeholder="Nom" name="nom" className="inputField" />
+          <input
+            type="text"
+            placeholder="Nom"
+            value={firstname}
+            name="firstname"
+            className="inputField"
+            onChange={handleOnChange}
+          />
         </div>
         <div className="inputContainer">
           <input
             type="email"
             placeholder="Adress email"
-            name="email"
+            name="addressEmail"
             className="inputField"
+            value={addressEmail}
+            onChange={handleOnChange}
           />
         </div>
 
@@ -22,8 +94,10 @@ function inscription() {
           <input
             type="number"
             placeholder="Numero telephone"
-            name="telephone"
+            name="phonenumber"
             className="inputField"
+            value={phonenumber}
+            onChange={handleOnChange}
           />
         </div>
 
@@ -43,7 +117,9 @@ function inscription() {
             id="motdepasse"
             className="inputField"
             type="password"
-            name="password"
+            name="motDePasse"
+            value={motDePasse}
+            onChange={handleOnChange}
           />
         </div>
         <button id="button">Connexion</button>
@@ -54,4 +130,5 @@ function inscription() {
     </>
   );
 }
+
 export default inscription;

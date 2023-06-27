@@ -1,5 +1,6 @@
 import vehicule from "../model/vehicule.js";
 
+
 export const getVehicule = async (req, res) => {
   try {
     let voiture = await vehicule.find({});
@@ -22,3 +23,6 @@ export const detail=async(req,res)=>{
  }
 
 }
+
+
+

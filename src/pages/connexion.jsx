@@ -1,9 +1,66 @@
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+
 import "../assets/css/connexion.css";
 
 function connexion() {
+  const navigate = useNavigate();
+  const [inputValue, setInputValue] = useState({
+    addressEmail: "",
+    motDePasse: "",
+  });
+  const { addressEmail, motDePasse } = inputValue;
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+  };
+
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "bottom-left",
+    });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        "http://localhost:4000/post/connexion",
+        {
+          ...inputValue,
+        },
+        { withCredentials: true }
+      );
+      console.log(inputValue);
+      const { success, message } = data;
+      if (success) {
+        handleSuccess(message);
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      } else {
+        handleError(message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setInputValue({
+      ...inputValue,
+      firstname: "",
+      motDePasse: "",
+    });
+  };
   return (
     <>
-      <form className="form_main" action="/post/connexion" method="POST">
+      <form className="form_main" onSubmit={handleSubmit}>
         <p className="heading">CONNEXION</p>
         <p className="form-title">Connectez-vous à votre compte</p>
         <div className="inputContainer">
@@ -21,8 +78,10 @@ function connexion() {
             placeholder=" Enter email"
             id="email"
             className="inputField"
-            type="email"
-            name="email"
+            type="text"
+            name="addressEmail"
+            value={addressEmail}
+            onChange={handleOnChange}
           />
         </div>
 
@@ -41,8 +100,10 @@ function connexion() {
             placeholder="Mot de Passe"
             id="motdepasse"
             className="inputField"
-            type="password"
-            name="password"
+            type="text"
+            name="motDePasse"
+            value={motDePasse}
+            onChange={handleOnChange}
           />
         </div>
         <button id="button">Connexion</button>

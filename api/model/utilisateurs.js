@@ -1,8 +1,9 @@
 import { Schema, model } from "mongoose";
+import bcrypt from "bcrypt";
 
 const utilisateur = new Schema(
   {
-    name: {
+    firstname: {
       type: String,
       required: true,
       trim: true,
@@ -14,6 +15,7 @@ const utilisateur = new Schema(
     addressEmail: {
       type: String,
       required: true,
+      unique: true,
     },
     motDePasse: {
       type: String,
@@ -27,8 +29,13 @@ const utilisateur = new Schema(
   { timestamps: true }
 );
 
+//bcript utlisation de .pre pour crypter avant sauvegarde ('save')
+// utilisateur.pre("save", async function (next) {
+//   if (!this.isModified("password")) {
+//     return next();
+//   }
+//   this.motDePasse = await bcrypt.hash(this.motDePasse, 12);
+// });
 const User = model("user", utilisateur);
 
 export default User;
-
-
