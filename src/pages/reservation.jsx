@@ -36,6 +36,7 @@ console.log(calcule);
 
   useEffect(() => {
     fetchData();
+   
   }, []);
 
   async function fetchData() {
@@ -56,24 +57,23 @@ console.log(calcule);
       console.log(error);
     }
   }
-  function handlePayement(){
+
+  
+   async function handlePayement(){
     
-   let donne={
+   const donne={
      userId:get._id,
      productId:vehicule._id,
-     amount:calcule
+     mount:calcule
     }
-    console.log(donne);
-   
+    console.log("donne:", donne)
      try {
-      axios.post("http://localhost:4000/transaction/payement",donne);
-
+      const {data}= await axios.post("http://localhost:4000/transaction/payement/",donne);
+      
    } catch (error) {
-    console.log(error);
+    console.log("error: ertyugiohjpk$ôùigomufyldtertyiuoihpo" );
     
    }
-    
-
 
   }
 
@@ -126,13 +126,15 @@ vehicule.prixjournee}</p>
                       >
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
-                          type="email"
+                          type="text"
+                          value={get.firstname}
                           placeholder="name@example.com"
                           autoFocus
                         />
                         <Form.Label>Payez</Form.Label>
                         <Form.Control
-                          type="email"
+                          type="number"
+                          value={calcule}
                           placeholder="name@example.com"
                           autoFocus
                         />

@@ -36,6 +36,6 @@ const utilisateur = new Schema(
 //   }
 //   this.motDePasse = await bcrypt.hash(this.motDePasse, 12);
 // });
-const User = model("user", utilisateur);
+export default model("user", utilisateur);
 
-export default User;
+

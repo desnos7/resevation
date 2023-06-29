@@ -6,43 +6,54 @@ import produit from "../model/vehicule.js"
 export const payements =  async(req,res) =>{
   
      try {
-        const { userId, productId, amount } = req.body;
-        const utiliseur = await utilisateur.findById(userId);
-        if( utiliseur&& utiliseur.Compte<amount){
-          return 
-        }else{
-            utilisateur.compte-=amount;
+        const { userId,mount,vehiculeId } = req.body;
+        // let amount= 2500;
+        // let userId="649b103eb5d521f07edecaf5"
+       const utiliseur = await utilisateur.findById(userId);
+       console.log(utilisateur);
 
-            await utilisateur.save()
+      //  let vehiculeId="64919134c031281bde9f3254"
+       
+        if( utiliseur&& utiliseur.Compte<mount){
+          return  res.send(utilisateur.Compte);
+        }else{
+            utiliseur.Compte-=mount;
+            await utiliseur.save()
         }
-   
-    
+        //const product = await produit.findById(vehiculeId);
+       
+        //if (product) {
+         // product.paidTransaction = newTransaction._id;
+         // await product.save();
+       // }
+
         // Créez une nouvelle transaction avec les informations fournies
         const newTransaction = await achat.create({
-            user: userId,
-            product: productId,
-            amount,
+            user: userId ,
+            product: vehiculeId ,
+            amount:mount,
             paymentStatus: "paye",
         })
+        await newTransaction.save()
+        console.log(newTransaction.user)
        
-
-        const product = await produit.findById(productId);
-        if (product) {
-          product.paidTransaction = newTransaction._id;
-          await product.save();
-        }
+        
+     const utilisateurFind=await utilisateur.findById(newTransaction.user)
     
-        res.status(200).json({ message: "Paiement effectué avec succès" });
+        res.status(200).json({ message: "succes de transaction" });
       } catch (error) {
+        console.log(error)
         res.status(500).json({ message: "nous pouvons pas"});
       }
 
 
 }
 
+
+
 export const annulation=  async (req, res) => {
         try {
-            const { transactionId  } = req.body;
+            
 
             const updatedTransaction = await achat.findOneAndUpdate(
                 { _id: transactionId },
@@ -60,7 +71,7 @@ export const annulation=  async (req, res) => {
 }}
 
 
-export const getTransation= async (req, res) => {
+export const getTransationall= async (req, res) => {
 
     try {
         const transaction = await achat.find({})

@@ -25,12 +25,11 @@ const vehicule = new Schema(
       required: true,
     },
     imageurls: [],
-    reservationencours: [],
     description: {
       type: String,
       required: true,
     },
-    paidTransaction: { type: mongoose.Schema.Types.ObjectId, ref: 'Transaction' }
+    paidTransaction: { type: mongoose.Schema.Types.ObjectId, ref: 'reservez' }
   },
   { timestamps: true }
 );

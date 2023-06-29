@@ -14,7 +14,7 @@ export const getVehicule = async (req, res) => {
 export const detail=async(req,res)=>{
  try{
     let id= req.params.id
-    console.log("tout mon :", id);
+   
     let voiture = await vehicule.findOne({_id:id})
     return res.status(200).json(voiture)
 

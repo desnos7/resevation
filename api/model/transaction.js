@@ -1,13 +1,12 @@
-import mongoose from "mongoose";
+import { Schema, model } from 'mongoose';
 
-const { Schema } = mongoose;
 
 const transaction = new Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
-  product: { type: mongoose.Schema.Types.ObjectId, ref: "Vehicules" },
+  user: { type: Schema.Types.ObjectId, ref: "user" ,required: true },
+  product: { type: Schema.Types.ObjectId, ref: "Vehicules" ,required:true},
   amount: { type: Number, required: true },
   paymentStatus: { type: String, required: true },
 });
 
-const transactione = mongoose.model("reservez", transaction);
-export default transactione;
+export default  model("reservez", transaction);
+
