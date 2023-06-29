@@ -6,8 +6,7 @@ import routeVehicule from "./routes/route.js";
 import { userVerification } from "./Middlewares/authMiddleware.js";
 import sigupInscription from "./routes/incription.js";
 import cookieParser from "cookie-parser";
-import transactione from "./model/transaction.js";
-import Vehicule from "../src/pages/vehicules.jsx";
+import transactione from "./routes/payement.js"
 
 const app = express();
 
@@ -26,18 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use("/vehicules", routeVehicule);
 app.use("/post", sigupInscription);
-app.use("/", async (req, res) => {
-  const tran = await transactione.create({
-    user: "jfkldjfkldjkfljds",
-    product: "kdjfkldsjfkdsjfdksl",
-    amount: 50000,
-    paymentStatus: "paid",
-  });
 
-  Vehicule =  await Vehicule.findByid(product)
-  Vehicule.paidTar = trans.id
-  a 
-});
+app.use("/transaction", transactione);
+
 
 mongoose
   .connect(

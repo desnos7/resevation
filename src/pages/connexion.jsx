@@ -38,23 +38,16 @@ function connexion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
+      const response = await axios.post(
         "http://localhost:4000/post/connexion",
         {
           ...inputValue,
         },
         { withCredentials: true }
       );
-      console.log(inputValue);
-      const { success, message } = data;
-      if (success) {
-        handleSuccess(message);
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-      } else {
-        handleError(message);
-      }
+      const data = response.data;
+      localStorage.setItem("utilisateur", JSON.stringify(data));
+      
     } catch (error) {
       console.log(error);
     }

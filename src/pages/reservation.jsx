@@ -28,8 +28,10 @@ function reservation() {
   const Fin= Date.parse(dateFin)
 
   const TotalJour=((Fin-Debut)/86400000)+1;
-  
 const calcule=valeur*TotalJour
+const  get=(JSON.parse(localStorage.getItem("utilisateur")))
+console.log("get:",get); 
+
 console.log(calcule);
 
   useEffect(() => {
@@ -37,12 +39,14 @@ console.log(calcule);
   }, []);
 
   async function fetchData() {
+    
     try {
       setLoading(true);
       const response = await axios.post(
         `http://localhost:4000/vehicules/detail/${id}`
       );
       const data = response.data;
+
       setVehicule(data);
       setValeur(data.prixjournee)
       console.log(data);
@@ -52,6 +56,27 @@ console.log(calcule);
       console.log(error);
     }
   }
+  function handlePayement(){
+    
+   let donne={
+     userId:get._id,
+     productId:vehicule._id,
+     amount:calcule
+    }
+    console.log(donne);
+   
+     try {
+      axios.post("http://localhost:4000/transaction/payement",donne);
+
+   } catch (error) {
+    console.log(error);
+    
+   }
+    
+
+
+  }
+
 
   return (
     <>
@@ -72,7 +97,7 @@ console.log(calcule);
               <div className="card-block ">
                 <h4 className="card-title"> {}</h4>
                 <p>nom de Produit:{vehicule.name}</p>
-                <p> nom de lutilisateur: </p>
+                <p> nom de lutilisateur: {get.firstname}</p>
                 <p>dateDebut:{dateDebut}</p>
                 <p>dateFin:{dateFin}</p>
                 <br />
@@ -118,7 +143,7 @@ vehicule.prixjournee}</p>
                     <Button variant="secondary" onClick={handleClose}>
                       Fermer
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handlePayement}>
                       Payez
                     </Button>
                   </Modal.Footer>

@@ -32,9 +32,6 @@ export const inscription = async (req, res, next) => {
 export const connexion = async (req, res, next) => {
   try {
     const { addressEmail, motDePasse } = req.body;
-    if (!addressEmail || !motDePasse) {
-      return res.json({ message: "All fields are required" });
-    }
     const user = await User.findOne({ addressEmail });
     console.log(user);
     if (user && (await bcrypt.compare(motDePasse, user.motDePasse))) {
@@ -43,12 +40,21 @@ export const connexion = async (req, res, next) => {
         withCredentials: true,
         httpOnly: false,
       });
-      res
-        .status(201)
-        .json({ message: "User logged in successfully", success: true });
+      res.send(user);
     }
     return res.json({ message: "Incorrect password or email" });
   } catch (error) {
     console.error(error);
   }
 };
+
+export const utilisateur = async (req, res) => {
+
+try {
+      const user = await User.find({})
+      res.send(user);
+} catch (error) {
+  console.log(error);
+}
+
+}
