@@ -24,7 +24,10 @@ const utilisateur = new Schema(
     Compte: {
       type: Number,
       default: 450000,
-    },
+    },admin:{
+      type: Boolean,
+      default:true
+    }
   },
   { timestamps: true }
 );

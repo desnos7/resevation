@@ -37,9 +37,10 @@ function connexion() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log( 'donnne');
     try {
       const response = await axios.post(
-        "http://localhost:4000/post/connexion",
+        "http://localhost:3000/post/connexion",
         {
           ...inputValue,
         },
@@ -47,6 +48,15 @@ function connexion() {
       );
       const data = response.data;
       localStorage.setItem("utilisateur", JSON.stringify(data));
+      console.log('data:', data);
+      if(data.admin=="true"){
+        navigate("/admin")
+      }{
+        navigate("/vehicules")
+      }
+
+
+      
       
     } catch (error) {
       console.log(error);

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import Header from "../components/header.jsx";
 import moment from "moment";
 
@@ -11,6 +12,7 @@ import axios from "axios";
 import "../assets/css/reservation.css";
 
 function reservation() {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -21,35 +23,34 @@ function reservation() {
   const [bon, setBon] = useState([]);
   const [loading, setLoading] = useState();
 
-  const [valeur,setValeur]=useState()
+  const [valeur, setValeur] = useState();
   console.log(dateDebut, dateFin);
 
   const Debut = Date.parse(dateDebut);
-  const Fin= Date.parse(dateFin)
+  const Fin = Date.parse(dateFin);
 
-  const TotalJour=((Fin-Debut)/86400000)+1;
-const calcule=valeur*TotalJour
-const  get=(JSON.parse(localStorage.getItem("utilisateur")))
-console.log("get:",get); 
+  const TotalJour = (Fin - Debut) / 86300000 + 1;
+  const calcule = valeur * TotalJour;
+  const get = JSON.parse(localStorage.getItem("utilisateur"));
+  console.log("get:", get);
 
-console.log(calcule);
+  console.log(calcule);
 
   useEffect(() => {
     fetchData();
-   
   }, []);
 
   async function fetchData() {
-    
     try {
       setLoading(true);
       const response = await axios.post(
-        `http://localhost:4000/vehicules/detail/${id}`
+        `http://localhost:3000/vehicules/detail/${id}`
       );
       const data = response.data;
+      console.log("data:", data);
 
       setVehicule(data);
-      setValeur(data.prixjournee)
+      setValeur(data.prixjournee);
       console.log(data);
 
       setLoading(false);
@@ -58,25 +59,23 @@ console.log(calcule);
     }
   }
 
-  
-   async function handlePayement(){
-    
-   const donne={
-     userId:get._id,
-     productId:vehicule._id,
-     mount:calcule
+  async function handlePayement() {
+    const donne = {
+      userId: get._id,
+      productId: vehicule._id,
+      mount: calcule,
+    };
+    console.log("donne:", donne);
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3000/transaction/payement/",
+        donne
+      );
+      navigate("/profile");
+    } catch (error) {
+      console.log("error: ertyugiohjpk$ôùigomufyldtertyiuoihpo");
     }
-    console.log("donne:", donne)
-     try {
-      const {data}= await axios.post("http://localhost:4000/transaction/payement/",donne);
-      
-   } catch (error) {
-    console.log("error: ertyugiohjpk$ôùigomufyldtertyiuoihpo" );
-    
-   }
-
   }
-
 
   return (
     <>
@@ -103,8 +102,7 @@ console.log(calcule);
                 <br />
                 <h3>Montant</h3>
                 <p> total Jours: {TotalJour}</p>
-                <p>Montant a payer par jour:{
-vehicule.prixjournee}</p>
+                <p>Montant a payer par jour:{vehicule.prixjournee}</p>
                 <h5>MONTANT TOTAL:{calcule} FCfa</h5>
                 <Button
                   variant="primary"

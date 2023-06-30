@@ -37,12 +37,12 @@ function inscription() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/post/inscription",
+        "http://localhost:3000/post/inscription",
         {
           ...inputValue,
         },
         { withCredentials: true }
-      ); 
+      );
       const { success, message } = data;
       if (success) {
         handleSuccess(message);

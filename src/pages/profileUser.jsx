@@ -10,6 +10,9 @@ import Header from "../components/header.jsx";
 import { Tabs } from "antd";
 const { TabsPane } = Tabs;
 
+const get = JSON.parse(localStorage.getItem("utilisateur"));
+  console.log("get:", get);
+
 function ProfileUser(params) {
   return (
     <>
@@ -25,9 +28,9 @@ function ProfileUser(params) {
                   className="mt-5 p-5"
                 >
                   <Card.Body>
-                    <Card.Title>Nom utilisateur:</Card.Title>
-                    <Card.Title>Emai utilisateur:</Card.Title>
-                    <Card.Title>ADMIN UTILISATEUR:</Card.Title>
+                    <Card.Title>Nom utilisateur:{get.firstname}</Card.Title>
+                    <Card.Title>Email utilisateur:{get.addressEmail}</Card.Title>
+                    <Card.Title>ADMIN UTILISATEUR:{get.admin}</Card.Title>
                   </Card.Body>
                 </Card>
               </TabsPane>

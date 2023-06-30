@@ -9,7 +9,6 @@ import Moment from "moment";
 import "../assets/css/vehicule.css";
 
 function Vehicule() {
-  
   const [vehicules, setVehicules] = useState([]);
   const [loading, setLoading] = useState();
   const [error, setError] = useState(null);
@@ -17,8 +16,7 @@ function Vehicule() {
   const [dateDebut, setDateDebut] = useState("");
   const [dateFin, setDateFin] = useState("");
 
-  const [JourTotal,setJourTotlal]=useState(0)
-
+  const [JourTotal, setJourTotlal] = useState(0);
 
   useEffect(() => {
     fetchData();
@@ -28,9 +26,10 @@ function Vehicule() {
     try {
       setLoading(true);
       const response = await axios.get(
-        "http://localhost:4000/vehicules/getvehicule"
+        "http://localhost:3000/vehicules/getvehicule"
       );
       const data = response.data;
+
       setVehicules(data);
       setLoading(false);
     } catch (error) {
