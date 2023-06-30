@@ -16,7 +16,8 @@ function header() {
                <li><Link to="/" >PROFILE</Link> </li>
                <li><Link to="/vehicules">VEHICULES</Link> </li> 
                <li><Link to="/connexion" >CONNEXION</Link> </li>
-               <li><Link to="/inscription" >INSCRIPTION</Link> </li>            
+               <li><Link to="/inscription" >INSCRIPTION</Link> </li>   
+               <li><Link to="/profile" >PROFILE</Link> </li>            
            </ul>
 
        </div>

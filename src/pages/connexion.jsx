@@ -107,7 +107,8 @@ function connexion() {
         </div>
         <button id="button">Connexion</button>
         <p className="signup-link">
-          créer un
+         
+          <Link to="/inscription"/>
           <a href="inscription">compte</a>
         </p>
       </form>
